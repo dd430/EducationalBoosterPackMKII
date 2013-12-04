@@ -35,9 +35,9 @@
 */
 
 
-const int xpin = 23;                  // x-axis of the accelerometer
-const int ypin = 24;                  // y-axis
-const int zpin = 25;                  // z-axis (only on 3-axis models)
+const int xpin = A0;                  // x-axis of the accelerometer
+const int ypin = A1;                  // y-axis
+const int zpin = A2;                  // z-axis (only on 3-axis models)
 
 void setup()
 {
@@ -50,13 +50,13 @@ void setup()
 void loop()
 {
   // print the sensor values:
-  Serial.print(analogRead(xpin));
+  Serial.print(((int) analogRead(xpin)) - 2048);
   // print a tab between values:
   Serial.print("\t");
-  Serial.print(analogRead(ypin));
+  Serial.print(((int) analogRead(ypin)) - 2048);
   // print a tab between values:
   Serial.print("\t");
-  Serial.print(analogRead(zpin));
+  Serial.print(((int) analogRead(zpin)) - 2048);
   Serial.println();
   // delay before next reading:
   delay(100);
