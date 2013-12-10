@@ -1,4 +1,3 @@
-
     LCD_protocol100
     Project
     ----------------------------------
@@ -21,7 +20,7 @@
 
     References
     ----------------------------------
-
+    http://embeddedcomputing.weebly.com/lcd_screen-library-suite.html
 
 
     embedXcode
