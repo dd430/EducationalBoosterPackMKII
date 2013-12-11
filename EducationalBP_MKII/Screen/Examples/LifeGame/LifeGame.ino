@@ -8,8 +8,8 @@
 ///
 /// @author		Rei Vilo
 /// @author		Rei Vilo
-/// @date		Dec 10, 2013 18:54
-/// @version	release 135
+/// @date		Dec 11, 2013 18:54
+/// @version	release 136
 ///
 /// @copyright	(c) Rei Vilo, 2013
 /// @copyright	CC = BY SA NC
@@ -30,8 +30,8 @@
 ///
 /// @author		Rei Vilo
 /// @author		Rei Vilo
-/// @date		Dec 10, 2013 18:54
-/// @version	135
+/// @date		Dec 11, 2013 18:54
+/// @version	136
 ///
 /// @copyright	(c) Rei Vilo, 2013
 /// @copyright	CC = BY SA NC
@@ -116,11 +116,27 @@ Screen_PicasoSGC myScreen(20, &mySerial);
 #error Unknown screen
 #endif
 
-// 32x32 great for EBPMK2
 
 // Beware of RAM limitations
+#if defined(HX8353E)                                                            // Educational BoosterPack MKII
+
+#if defined(__MSP430F5529__)
 #define ROWS 32 // max 80
 #define COLS 32 // max 60
+#elif defined(__LM4F120H5QR__)
+#define ROWS 64 // max 80
+#define COLS 64 // max 60
+#else
+#error Board not supported
+#endif
+
+#else                                                                           // general case
+
+#define ROWS 80 // max 80
+#define COLS 60 // max 60
+
+#endif
+
 #define PERCENT 70 // % dead
 
 // bits 7 . 6 . 5 . 4 . 3 . 2 . 1 . 0
@@ -142,7 +158,7 @@ uint32_t chrono;
 uint8_t page;
 uint16_t colours[16];
 uint16_t generation;
-uint8_t xSize, ySize;
+uint8_t rowSize, colSize;
 uint8_t i, j;
 
 void new_game() {
@@ -151,7 +167,7 @@ void new_game() {
         for (j=0; j < COLS; j++) {
             if (random(100) > PERCENT)  _screen[page^1][i][j] = ALIVE;
             else                        _screen[page^1][i][j] = DEAD;
-            myScreen.rectangle(4*i, 4*j, 4*i+3, 4*j+3, colours[_screen[page^1][i][j]]);
+            myScreen.dRectangle(i*rowSize, j*colSize, rowSize, colSize, colours[_screen[page^1][i][j]]);
         }
     }
     
@@ -168,12 +184,11 @@ void setup() {
     
     myScreen.begin();
     
-    xSize = myScreen.screenSizeX() / ROWS;
-    ySize = myScreen.screenSizeY() / COLS;
+    rowSize = myScreen.screenSizeX() / ROWS;
+    colSize = myScreen.screenSizeY() / COLS;
     
     delay(10);
     myScreen.setPenSolid(true);
-    
     
     // 0-7 dying: cold colours
     // from green to blue to black
@@ -246,7 +261,7 @@ void update_pixel(uint8_t i, uint8_t j, uint8_t neighbours) {
     }
     
     if (_screen[page][i][j]!=_screen[page^1][i][j])
-        myScreen.rectangle(4*i, 4*j, 4*i+3, 4*j+3, colours[_screen[page^1][i][j]]);
+        myScreen.dRectangle(i*rowSize, j*colSize, rowSize, colSize, colours[_screen[page^1][i][j]]);
 }
 
 void loop() {
