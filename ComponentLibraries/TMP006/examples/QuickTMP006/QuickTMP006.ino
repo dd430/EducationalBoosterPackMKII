@@ -15,6 +15,8 @@ This example code is in the public domain.
 
 #include <Wire.h>
 #include "tmp006.h"
+#define USE_USCI_B1 
+
 tmp006 tmp006;
 void printFloat(float value, int places) ;
 

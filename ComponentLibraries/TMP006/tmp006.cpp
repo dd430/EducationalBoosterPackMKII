@@ -55,7 +55,7 @@ Removed Print_Temp() API, this method can be shown as an example sketch.
 
 
 #include "tmp006.h"
-
+#define USE_USCI_B1 
 
 
  /*!

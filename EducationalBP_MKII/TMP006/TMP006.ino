@@ -11,6 +11,8 @@ This example code is in the public domain.
 */
 #include <Wire.h>
 #include "tmp006.h"
+#define USE_USCI_B1 
+
 tmp006 tmp006;
 void printFloat(float value, int places) ;
 
@@ -25,6 +27,7 @@ void loop()
   tmp006.getTempStruct(&temp);
   Serial.print("Temp in C = ");
   printFloat(temp.temp, 2);
+  Serial.print("\n");
   delay(1000);
 }
 

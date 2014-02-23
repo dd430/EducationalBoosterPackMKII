@@ -3,27 +3,16 @@
 #include <Wire.h>
 #include <tmp006.h>
 #include "OPT3001.h"
-
-//#define USING_MSP430F5529_LAUNCHPAD
-#define USING_TIVA_C_LAUNCHPAD
+#define USE_USCI_B1 
+#define USING_MSP430F5529_LAUNCHPAD
+//#define USING_TIVA_C_LAUNCHPAD
 
 //-----For now, analog pin definitions are different
 //----between MSP430 & Tiva LaunchPads
 
-#ifdef USING_MSP430F5529_LAUNCHPAD
-//JOYSTICK
-const int JOY_X = A5;
-const int JOY_Y = A3;
-const int SEL = 5;
 
-//MIC
-const int MIC = A6;
-//ACCELEROMETER
-const int ACC_X = A0;
-const int ACC_Y = A1;
-const int ACC_Z = A2;
 
-#elif defined(USING_TIVA_C_LAUNCHPAD)
+
 const int JOY_X = 2;
 const int JOY_Y = 26;
 const int SEL = 5;
@@ -36,9 +25,6 @@ const int ACC_X = 23;
 const int ACC_Y = 24;
 const int ACC_Z = 25;
 
-#else
-#error "Your LaunchPad platform is currently not supported"
-#endif
 
 //SWITCHES
 const int SW1 = 33;
@@ -221,32 +207,32 @@ void loop()
   for(brightness = 0; brightness<255; brightness+=fadeAmount){
     analogWrite(RGB_RED, brightness);    
     // wait for 30 milliseconds to see the dimming effect    
-    delay(30); 
+    delay(10); 
   }
   for(brightness = 255; brightness>=0; brightness-=fadeAmount){
     analogWrite(RGB_RED, brightness);    
     // wait for 30 milliseconds to see the dimming effect    
-    delay(30); 
+    delay(10); 
   }  
   for(brightness = 0; brightness<255; brightness+=fadeAmount){
     analogWrite(RGB_GRN, brightness);    
     // wait for 30 milliseconds to see the dimming effect    
-    delay(30); 
+    delay(10); 
   }
   for(brightness = 255; brightness>=0; brightness-=fadeAmount){
     analogWrite(RGB_GRN, brightness);    
     // wait for 30 milliseconds to see the dimming effect    
-    delay(30); 
+    delay(10); 
   }  
   for(brightness = 0; brightness<255; brightness+=fadeAmount){
     analogWrite(RGB_BLU, brightness);    
     // wait for 30 milliseconds to see the dimming effect    
-    delay(30); 
+    delay(10); 
   }
   for(brightness = 255; brightness>=0; brightness-=fadeAmount){
     analogWrite(RGB_BLU, brightness);    
     // wait for 30 milliseconds to see the dimming effect    
-    delay(30); 
+    delay(10); 
   }
   
 

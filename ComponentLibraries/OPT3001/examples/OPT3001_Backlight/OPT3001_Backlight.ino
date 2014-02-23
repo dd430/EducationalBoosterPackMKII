@@ -9,7 +9,7 @@ Released to public domain.
 
 #include <Wire.h>			// Needed by Energia for Tiva C LaunchPad 
 #include "OPT3001.h"
-
+#define USE_USCI_B1 
 opt3001 opt3001;
 
 const uint8_t backlightPin = 39; //PWM-capable pin tied to backlight

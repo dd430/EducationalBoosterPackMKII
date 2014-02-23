@@ -35,15 +35,15 @@
 */
 
 
-const int xpin = A0;                  // x-axis of the accelerometer
-const int ypin = A1;                  // y-axis
-const int zpin = A2;                  // z-axis (only on 3-axis models)
+const int xpin = 23;                  // x-axis of the accelerometer
+const int ypin = 24;                  // y-axis
+const int zpin = 25;                  // z-axis (only on 3-axis models)
 
 void setup()
 {
   // initialize the serial communications:
   Serial.begin(9600);
-  
+  Serial.print("working \n");
 
 }
 
