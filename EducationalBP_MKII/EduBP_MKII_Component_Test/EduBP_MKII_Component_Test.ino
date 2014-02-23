@@ -190,12 +190,13 @@ void loop()
 
   
   //TEST OPT3001 LIGHT SENSOR
-  Serial.println("Cover the light sensor to test the OPT3001.");
-  while(opt3001.readResult() > 30);
-  Serial.println("Shine flashlight onto the light sensor ");
-  while(opt3001.readResult() < 1000);
+  //To be enabled once OPT3001 is added to future Edu BP MK II Rev.
+  // Serial.println("Cover the light sensor to test the OPT3001.");
+  // while(opt3001.readResult() > 30);
+  // Serial.println("Shine flashlight onto the light sensor ");
+  // while(opt3001.readResult() < 1000);
   
-  Serial.println("OPT3001 testing successful!");
+  // Serial.println("OPT3001 testing successful!");
   
   //TEST RGB LED
   Serial.println("Press SW1 to test the RGB LED.");
@@ -236,7 +237,7 @@ void loop()
   }
   
 
-  Serial.println("TEST SUCCESSFUL!");
+  Serial.println("ALL TEST SUCCESSFUL!");
   while(1);
 }
 

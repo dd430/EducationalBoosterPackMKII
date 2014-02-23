@@ -32,7 +32,7 @@ http://boosterpackdepot.info/wiki/index.php?title=Educational_BoosterPack_MK_II
 
 // constants won't change. They're used here to 
 // set pin numbers:
-const int buttonOne = 33;     // the number of the pushbutton pin
+const int buttonOne = 34;     // the number of the pushbutton pin
 const int buttonTwo = 32;     // the number of the pushbutton pin
 const int ledGreen =  38;      // the number of the LED pin
 const int ledBlue =  37;      // the number of the LED pin

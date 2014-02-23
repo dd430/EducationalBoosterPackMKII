@@ -54,8 +54,8 @@ Screen_HX8353E myScreen;
 
 
 // Define variables and constants
-#define joystickX A5
-#define joystickY A3
+#define joystickX 2
+#define joystickY 26
 uint16_t x, y, x00, y00;
 uint16_t colour;
 uint32_t z;
