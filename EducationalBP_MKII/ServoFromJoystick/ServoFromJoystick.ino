@@ -20,10 +20,9 @@ This example code is in the public domain.
 */
 
 #include <Servo.h> 
- 
+#define JOYSTICK_X 2 // analog pin used to connect the x axis of the analog joystick 
+
 Servo myservo;  // create servo object to control a servo 
- 
-int potpin = 2;  // analog pin used to connect the potentiometer
 int val;    // variable to read the value from the analog pin 
  
 void setup() 
@@ -33,7 +32,7 @@ void setup()
  
 void loop() 
 { 
-  val = analogRead(potpin);            // reads the value of the potentiometer (value between 0 and 1023) 
+  val = analogRead(JOYSTICK_X);        // reads the value of the joystick's x-axis (value between 0 and 4096) 
   val = map(val, 0, 4096, 0, 179);     // scale it to use it with the servo (value between 0 and 180) 
   myservo.write(val);                  // sets the servo position according to the scaled value 
   delay(15);                           // waits for the servo to get there 

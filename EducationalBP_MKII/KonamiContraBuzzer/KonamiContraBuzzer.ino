@@ -1,3 +1,23 @@
+/* 
+ Educational BoosterPack MK II - Konami/Contra Intro
+http://boosterpackdepot.info/wiki/index.php?title=Educational_BoosterPack_MK_II
+ 
+ 
+ Use Joystick & Push buttons to enter the 'secret' Konami/Contra Cheat Code
+ When correct code is entered:
+ - Play Konami/Contra Intro through the buzzer, demonstrating
+   buzzer tune() API and pitch/tone/simple music generation
+ - Blue LED lights up  
+ 
+ Use Serial Monitor window to debug/follow statemachine
+ 
+ Feb 2014 - Initial version created for Edu BP MK II
+            
+            
+ by Dung Dang
+ 
+ */
+
 #include "pitches.h"
 
 int buzzerPin = 40;
@@ -209,7 +229,7 @@ void loop()
 		// divided by the note type.
 		//e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
 		// Had to down tempo to 100/150 
-		int noteDuration = 1500/noteDurations[thisNote];
+		int noteDuration = 1000/noteDurations[thisNote];
 		tone(buzzerPin, melody[thisNote],noteDuration);
 
 		int pauseBetweenNotes = noteDuration + 50;      //delay between pulse
