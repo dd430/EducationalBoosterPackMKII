@@ -7,8 +7,7 @@
 #define USING_MSP430F5529_LAUNCHPAD
 //#define USING_TIVA_C_LAUNCHPAD
 
-//-----For now, analog pin definitions are different
-//----between MSP430 & Tiva LaunchPads
+
 
 
 // Core library for code-sense
@@ -362,7 +361,7 @@ void loop()
     // to calculate the note duration, take one second 
     // divided by the note type.
     //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
-    int noteDuration = 500/noteDurations[thisNote];
+    int noteDuration = 1000/noteDurations[thisNote];
     tone(BUZZ, melody[thisNote],noteDuration);
     int pauseBetweenNotes = noteDuration + 50;      //delay between pulse
     delay(pauseBetweenNotes>>2);
@@ -443,33 +442,33 @@ void loop()
   
   for(brightness = 0; brightness<255; brightness+=fadeAmount){
     analogWrite(RGB_RED, brightness);    
-    // wait for 5 milliseconds to see the dimming effect    
-    delay(5); 
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(10); 
   }
   for(brightness = 255; brightness>=0; brightness-=fadeAmount){
     analogWrite(RGB_RED, brightness);    
-   // wait for 5 milliseconds to see the dimming effect    
-    delay(5); 
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(10); 
   }  
   for(brightness = 0; brightness<255; brightness+=fadeAmount){
     analogWrite(RGB_GRN, brightness);    
-    // wait for 5 milliseconds to see the dimming effect    
-    delay(5);  
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(10); 
   }
   for(brightness = 255; brightness>=0; brightness-=fadeAmount){
     analogWrite(RGB_GRN, brightness);    
-    // wait for 5 milliseconds to see the dimming effect    
-    delay(5); 
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(10); 
   }  
   for(brightness = 0; brightness<255; brightness+=fadeAmount){
     analogWrite(RGB_BLU, brightness);    
-    // wait for 5 milliseconds to see the dimming effect    
-    delay(5);  
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(10); 
   }
   for(brightness = 255; brightness>=0; brightness-=fadeAmount){
     analogWrite(RGB_BLU, brightness);    
-    // wait for 5 milliseconds to see the dimming effect    
-    delay(5); 
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(10); 
   }
   
     Serial.println("*** LCD_screen test");
